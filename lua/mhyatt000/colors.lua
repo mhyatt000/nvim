@@ -1,6 +1,6 @@
 -- Default options:
 require("gruvbox").setup({
-  terminal_colors = true, -- add neovim terminal colors
+  terminal_colors = false, -- add neovim terminal colors
   undercurl = true,
   underline = true,
   bold = true,
@@ -9,7 +9,7 @@ require("gruvbox").setup({
     emphasis = true,
     comments = true,
     operators = false,
-    folds = true,
+    folds = false,
   },
   strikethrough = true,
   invert_selection = false,

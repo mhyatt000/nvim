@@ -85,11 +85,11 @@ cmp.setup({
 
 		-- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 		-- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-		['<enter>'] = cmp.mapping.confirm({ select = true }), -- was '<C-y>'
-        ['<Tab>'] = cmp_action.luasnip_supertab(),
-        ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-		['<C-Space>'] = cmp.mapping.complete(),
-
+		['<leader><Tab>'] = cmp.mapping.confirm({ select = true }), -- was '<C-y>'
+		['<S-Tab>'] = cmp.mapping.confirm({ select = true }), -- was '<C-y>'
+        -- ['<C-Tab>'] = cmp_action.luasnip_supertab(),
+        -- ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+		-- ['<C-Space>'] = cmp.mapping.complete(),
 	}),
 })
 

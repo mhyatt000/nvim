@@ -11,6 +11,10 @@ vim.keymap.set("n","W", "b")
 vim.keymap.set("n","L", "$")
 vim.keymap.set("n","H", "0")
 
+-- paragraph movement ... dont work
+-- vim.keymap.set('n', '<leader>[', '[[', {noremap = true})
+-- vim.keymap.set('n', '<leader>]', ']]', {noremap = true})
+
 -- copy to clipboard
 vim.keymap.set("n","<leader>c", "\"+")
 vim.keymap.set("v","<leader>c", "\"+")
@@ -59,34 +63,61 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- end primeagen
 --
 
--- vim.keymap.set( "n", "<leader>lint", function()  vim.api.system(":! black % &&  isort %<cr>") end)
+-- BUFFERS
+vim.keymap.set('n', '<leader>p<Tab>', ':b#<cr>')
+
+-- prep python
+vim.keymap.set("n", "<leader>2", ":w<cr>:! python %")
+-- lint python file. :e is for reloading the buffer
+vim.keymap.set("n", "<leader>3", ":w<cr>:! black % && isort %<cr>:e<cr><cr>")
+vim.keymap.set("n", "<leader>4", ":! git add -A; git commit -m 'nvim deploy'; git push <cr>")
+vim.keymap.set("n", "<leader>n", "/\\v(<def>|<class>)<cr>")
+
 
 function tree()
-    vim.cmd(50 .. "vsplit | terminal tree")
+    vim.cmd(50 .. "vsplit | terminal tree --dirsfirst")
 end
-vim.api.nvim_set_keymap('n', '<leader>tre', ":lua tree()<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tre', ":lua tree()<CR>", { noremap = true, silent = true })
+
+
+function run()
+    vim.cmd("vsplit | terminal")
+end
+vim.keymap.set('n', '<leader>r', ":lua run()<CR>", { noremap = true, silent = true })
+vim.keymap.set('t','<esc>','<C-\\><C-N>')
 
 
 function run_python()
-    local height = math.floor(vim.fn.winheight(0) / 4)
-    vim.cmd(height .. "split | terminal python3 " .. vim.fn.expand('%'))
+    vim.cmd("vsplit | terminal python3 " .. vim.fn.expand('%'))
 end
-vim.api.nvim_set_keymap('n', '<leader>rp', ":lua run_python()<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>rp', ":lua run_python()<CR>", { noremap = true, silent = true })
 
 function run_bash()
-    local height = math.floor(vim.fn.winheight(0) / 4)
-    vim.cmd(height .. "split | terminal bash " .. vim.fn.expand('%'))
+    vim.cmd("vsplit | terminal bash " .. vim.fn.expand('%'))
 end
-vim.api.nvim_set_keymap('n', '<leader>rb', ":lua run_bash()<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>rb', ":lua run_bash()<CR>", { noremap = true, silent = true })
 
 -- tmux
 
 -- making splits
 vim.keymap.set('n', '<leader>b\'', ':split<cr><leader>b<down>', {noremap = true})
+vim.keymap.set('n', '<leader>bn', ':split<cr><leader>b<down>', {noremap = true})
 vim.keymap.set('n', '<leader>b5', ':vsplit<cr><leader>b<right>', {noremap = true})
+vim.keymap.set('n', '<leader>bv', ':vsplit<cr><leader>b<right>', {noremap = true})
+
+-- WINDOW RESIZING
+-- "+" increase size
+vim.keymap.set('n', '<leader>b=', ':vertical resize +20<cr>', {noremap = true})
+-- "-" decrease size
+vim.keymap.set('n', '<leader>b-', ':vertical resize -20<cr>', {noremap = true})
+-- shift to do vertical
+vim.keymap.set('n', '<leader>b+', ':horizontal resize +10<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>b_', ':horizontal resize -10<cr>', {noremap = true})
+
 
 -- close buffer
-vim.keymap.set('n', '<leader>bd', ':close<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>bd', ':bd<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>bw', ':bw<cr>', {noremap = true})
 
 
 -- changing between splits
