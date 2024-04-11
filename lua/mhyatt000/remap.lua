@@ -1,5 +1,6 @@
 vim.keymap.set("n","<leader><leader>", ":")
 vim.keymap.set("n","<leader>wsp", ":w<cr>:so<cr>:PackerSync<cr>")
+
 -- no mouse
 vim.o.mouse = ""
 
