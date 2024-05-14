@@ -11,10 +11,10 @@ return {
             context = 'buffers', -- Default context to use, 'buffers', 'buffer' or none (can be specified manually in prompt via @).
             -- default window options
             window = {
-                layout = 'float',
+                layout = 'vertical', -- 'float',
                 -- Options below only apply to floating windows
                 relative = 'editor', -- 'editor', 'win', 'cursor', 'mouse'
-                border = 'single', -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+                border = 'double', -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
                 width = 0.8, -- fractional width of parent
                 height = 0.6, -- fractional height of parent
                 row = nil, -- row position of the window, default is centered
@@ -23,9 +23,42 @@ return {
                 footer = nil, -- footer of chat window
                 zindex = 1, -- determines if window is on top or below other floating windows
             },
-            -- Insert the rest of your configuration here
+
+            mappings = {
+                complete = {
+                    detail = '<C-f> is for finish',
+                    insert ='<C-f>',
+                },
+                close = {
+                    normal = 'q',
+                    insert = '<C-c>'
+                },
+                reset = {
+                    normal ='<C-l>',
+                    insert = '<C-l>'
+                },
+                submit_prompt = {
+                    normal = '<CR>',
+                    insert = '<C-m>'
+                },
+                accept_diff = {
+                    normal = '<C-y>',
+                    insert = '<C-y>'
+                },
+            },
         })
+
+        -- vim.api.nvim_set_keymap('n', '<leader>ap',{
+            -- "<leader>aq",
+            -- function()
+                -- local input = vim.fn.input("Quick Chat: ")
+                -- if input ~= "" then
+                    -- require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+                -- end
+            -- end,
+            -- desc = "CopilotChat - Quick chat",
+        -- })
+
     end
-    -- Example if you want to lazy load on certain commands:
-    -- cmd = {'YourCommandHere', 'AnotherCommand'}
+
 }
