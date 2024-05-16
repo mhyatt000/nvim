@@ -11,13 +11,13 @@ return {
             context = 'buffers', -- Default context to use, 'buffers', 'buffer' or none (can be specified manually in prompt via @).
             -- default window options
             window = {
-                layout = 'vertical', -- 'float',
+                layout = 'float', -- 'float', vertical', 'horizontal'
                 -- Options below only apply to floating windows
-                relative = 'editor', -- 'editor', 'win', 'cursor', 'mouse'
+                relative = 'win', -- 'editor', 'win', 'cursor', 'mouse'
                 border = 'double', -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
-                width = 0.8, -- fractional width of parent
-                height = 0.6, -- fractional height of parent
-                row = nil, -- row position of the window, default is centered
+                width = 0.9, -- fractional width of parent
+                height = 0.3, -- fractional height of parent
+                row = 60, -- row position of the window, default is centered
                 col = nil, -- column position of the window, default is centered
                 title = 'Copilot Chat', -- title of chat window
                 footer = nil, -- footer of chat window

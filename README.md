@@ -11,3 +11,6 @@ my nvim config
 - the good features require nvim>=0.9.5
     - i have a copy in the main dir for linux machines
     - you can `alias nvim=/path/to/nvim` 
+- ripgrep needed for telescope live grep
+    - `sudo apt install ripgrep`
+    - `brew install ripgrep`

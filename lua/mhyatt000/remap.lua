@@ -118,7 +118,6 @@ vim.keymap.set('n', '<leader>b_', ':horizontal resize -10<cr>', {noremap = true}
 
 -- close buffer
 vim.keymap.set('n', '<leader>bd', ':bd<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>bw', ':bw<cr>', {noremap = true})
 
 
 -- changing between splits
@@ -131,3 +130,6 @@ vim.keymap.set('n', '<leader>b<left>', '<C-w>h')
 vim.keymap.set('n', '<leader>b<down>', '<C-w>j')
 vim.keymap.set('n', '<leader>b<up>', '<C-w>k')
 vim.keymap.set('n', '<leader>b<right>', '<C-w>l')
+
+vim.keymap.set('n', '<leader>bw', '<C-w>w')
+vim.keymap.set('n', '<leader>b<Tab>', '<C-w>p')

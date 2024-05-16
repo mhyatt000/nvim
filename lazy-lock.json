@@ -20,5 +20,5 @@
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "telescope.nvim": { "branch": "master", "commit": "7011eaae0ac1afe036e30c95cf80200b8dc3f21a" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
-  "vim-fugitive": { "branch": "master", "commit": "5b0347b5231a0f40abc311ccaf7bbf02d3ce3a5a" }
+  "vim-fugitive": { "branch": "master", "commit": "19ca61c78c86a2ce6a425aee9b1c6664e5149ea6" }
 }
