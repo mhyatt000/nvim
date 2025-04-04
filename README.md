@@ -9,6 +9,7 @@ my nvim config
         - `nvm install 20`
 - :MasonInstall <lsp> to install lsps
 - the good features require nvim>=0.9.5
+    - you can try to install it via `sudo apt install neovim`
     - i have a copy in the main dir for linux machines
     - you can `alias nvim=/path/to/nvim` 
 - ripgrep needed for telescope live grep
