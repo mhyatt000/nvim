@@ -1,6 +1,15 @@
 # nvim
 my nvim config
 
+# INSTALL
+
+Run chmod u+x nvim-linux-x86_64.appimage && ./nvim-linux-x86_64.appimage
+If your system does not have FUSE you can extract the appimage:
+
+    ./nvim-linux-x86_64.appimage --appimage-extract
+    ./squashfs-root/usr/bin/nvim
+
+
 ## important notes
 - copilot and lsps require nodejs > 18
     - nvm works fine
