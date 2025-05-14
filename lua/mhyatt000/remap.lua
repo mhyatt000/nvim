@@ -71,7 +71,7 @@ vim.keymap.set('n', '<leader>p<Tab>', ':b#<cr>')
 vim.keymap.set("n", "<leader>2", ":w<cr>:! python %")
 -- lint python file. :e is for reloading the buffer
 vim.keymap.set("n", "<leader>3", ":w<cr>:! black % && isort %<cr>:e<cr><cr>")
-vim.keymap.set("n", "<leader>4", ":! git add -A; git commit -m 'nvim deploy'; git push <cr>")
+vim.keymap.set("n", "<leader>4", ":w<cr>:! uv run %")
 vim.keymap.set("n", "<leader>n", "/\\v(<def>|<class>)<cr>")
 
 

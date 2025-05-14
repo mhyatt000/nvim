@@ -28,6 +28,17 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+
+local venv_path = vim.fn.getcwd() .. "/.venv/bin/python"
+require('lspconfig').pyright.setup({
+    on_attach = on_attach,
+    settings = {
+        python = {
+            pythonPath = venv_path
+        }
+    }
+})
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
 	ensure_installed = {
