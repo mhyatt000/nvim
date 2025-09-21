@@ -29,7 +29,42 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 
-local venv_path = vim.fn.getcwd() .. "/.venv/bin/python"
+local function find_venv_path()
+  local uv = vim.loop
+  local dir = uv.cwd()
+
+  while dir do
+    local venv_path = dir .. "/.venv"
+    local git_path = dir .. "/.git"
+
+    -- Check if .venv exists and is a directory
+    local venv_stat = uv.fs_stat(venv_path)
+    if venv_stat and venv_stat.type == "directory" then
+      return venv_path
+    end
+
+    -- Check if .git exists and is a directory
+    local git_stat = uv.fs_stat(git_path)
+    if git_stat and git_stat.type == "directory" then
+      return ""
+    end
+
+    -- Move to parent directory
+    local parent_dir = uv.fs_realpath(dir .. "/..")
+    if parent_dir == dir or parent_dir == nil then
+      break
+    end
+    dir = parent_dir
+  end
+
+  return ""
+end
+
+
+-- local venv_path = vim.fn.getcwd() .. "/.venv/bin/python"
+-- local venv_path = os.getenv("VIRTUAL_ENV") .. "/bin/python"
+local venv_path = find_venv_path() .. "/bin/python"
+
 require('lspconfig').pyright.setup({
     on_attach = on_attach,
     settings = {
