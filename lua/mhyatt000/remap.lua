@@ -71,6 +71,7 @@ vim.keymap.set('n', '<leader>p<Tab>', ':b#<cr>')
 vim.keymap.set("n", "<leader>2", ":w<cr>:! python %")
 -- lint python file. :e is for reloading the buffer
 vim.keymap.set("n", "<leader>3", ":w<cr>:! uvx ruff check % && uvx ruff format %<cr>:e<cr><cr>")
+vim.keymap.set("n", "<leader>5", ":w<cr>:! uvx pre-commit run --files %<cr>")
 vim.keymap.set("n", "<leader>4", ":w<cr>:! uv run %")
 vim.keymap.set("n", "<leader>n", "/\\v(<def>|<class>)<cr>")
 
