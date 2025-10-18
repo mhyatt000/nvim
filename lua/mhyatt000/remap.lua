@@ -68,11 +68,12 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set('n', '<leader>p<Tab>', ':b#<cr>')
 
 -- prep python
-vim.keymap.set("n", "<leader>2", ":w<cr>:! python %")
+vim.keymap.set("n", "<leader>1", ":w<cr>:! python %")
+vim.keymap.set("n", "<leader>2", ":w<cr>:! uv run %")
 -- lint python file. :e is for reloading the buffer
-vim.keymap.set("n", "<leader>3", ":w<cr>:! uvx ruff check % && uvx ruff format %<cr>:e<cr><cr>")
-vim.keymap.set("n", "<leader>5", ":w<cr>:! uvx pre-commit run --files %<cr>")
-vim.keymap.set("n", "<leader>4", ":w<cr>:! uv run %")
+vim.keymap.set("n", "<leader>3", ":w<cr>:! uvx ruff check --fix --unsafe-fixes % && uvx ruff format % && <cr>:e<cr><cr>")
+vim.keymap.set("n", "<leader>4", ":w<cr>:! uvx pre-commit run --files % && <cr>:e<cr><cr>")
+-- vim.keymap.set("n", "<leader>4", ":w<cr>:! uv run %")
 vim.keymap.set("n", "<leader>n", "/\\v(<def>|<class>)<cr>")
 
 
