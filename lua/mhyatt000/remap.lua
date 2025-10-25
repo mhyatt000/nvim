@@ -51,8 +51,9 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- delete to the void register... doesnt affect paste
-vim.keymap.set("x", "<leader>p", [["_dP]])
+-- paste without overwriting clipboard
+vim.keymap.set("x", "<leader>p", [["_dp]])
+vim.keymap.set("x", "<leader>P", [["_dP]])
 
 -- ctrl-c is weird
 vim.keymap.set("i", "<C-c>", "<Esc>")
