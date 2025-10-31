@@ -1,6 +1,12 @@
 -- READ THIS!
 -- https://github.com/VonHeikemen/lsp-zero.nvim
 
+local function start(server, opts)
+  local cfg = vim.lsp.config(server, opts or {})
+  vim.lsp.start(cfg)
+end
+
+
 local lsp = require('lsp-zero')
 require('cmp_luasnip')
 
@@ -65,30 +71,38 @@ end
 -- local venv_path = os.getenv("VIRTUAL_ENV") .. "/bin/python"
 local venv_path = find_venv_path() .. "/bin/python"
 
-require('lspconfig').pyright.setup({
-    on_attach = on_attach,
-    settings = {
-        python = {
-            pythonPath = venv_path
-        }
-    }
+vim.lsp.start("pyright", {
+  -- pythonPath is deprecated; prefer venv detection:
+  settings = {
+    python = (function()
+      local venv = os.getenv("VIRTUAL_ENV")
+      if venv then
+        return { venvPath = vim.fn.fnamemodify(venv, ":h"), venv = vim.fn.fnamemodify(venv, ":t") }
+      else
+        return {}  -- pyright will use system interpreter
+      end
+    end)(),
+  },
 })
+
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
 	ensure_installed = {
-		'tsserver', 
 		'rust_analyzer',
         'eslint',
+        "ts_ls",  
 	},
+    automatic_installation = true,
 	handlers = {
 	lsp.default_setup,
 	lua_ls = function()
 			local lua_opts = lsp.nvim_lua_ls()
-			require('lspconfig').lua_ls.setup(lua_opts)
+            start("lua_ls", lua_opts)
 		end,
 	}
 })
+
 
 cmp.setup({
   formatting = {
