@@ -3,8 +3,11 @@ return {
     'folke/lazy.nvim',
 	'theprimeagen/harpoon',
 	'mbbill/undotree',
-	'tpope/vim-fugitive',
     'saadparwaiz1/cmp_luasnip',
+
+    'tpope/vim-fugitive',
+    {'akinsho/git-conflict.nvim', version = "*", config = true},
+
 
     -- folding
     'tmhedberg/SimpylFold',
@@ -35,7 +38,7 @@ return {
 		-- end
 	-- },
 
-	'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter/nvim-treesitter',
 
 	{
 		'VonHeikemen/lsp-zero.nvim',
