@@ -40,3 +40,14 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal textwidth=100",
   command = "setlocal colorcolumn=100",
 })
+
+-- Auto-wrap markdown at 100 columns
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.textwidth = 100
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.formatoptions:append("t")  -- auto-wrap text
+  end,
+})
