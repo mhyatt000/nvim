@@ -1,0 +1,12 @@
+[workspace]
+authors = ["Matthew Hyatt <mhyatt000@gmail.com>"]
+channels = ["conda-forge"]
+name = "nvim"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+curl = { cmd = "curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage" } 
+link = { cmd = "ln -s ~/.config/nvim/nvim-linux-x86_64.appimage ~/.local/bin/nvim" }
+
+[dependencies]
