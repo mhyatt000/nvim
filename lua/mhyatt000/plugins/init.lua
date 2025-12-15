@@ -16,13 +16,33 @@ return {
     -- use lua instead 'github/copilot.vim',
     { 
         "zbirenbaum/copilot.lua" ,
-        -- requires = {
-            -- "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-        -- },
+        requires = {
+            "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+            init = function()
+                vim.g.copilot_nes_debounce = 25
+            end,
+        },
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
-            require("copilot").setup({})
+            require("copilot").setup({
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = true,
+                    hide_during_completion = true,
+                    debounce = 25,
+                    trigger_on_accept = true,
+                    keymap = {
+                        accept = "<Tab>",
+                        accept_word = "<M-w>",
+                        accept_line = "<M-l>",
+                        next = "<M-]>",
+                        prev = "<M-[>",
+                        dismiss = "<S-Esc>",
+                    },
+                },
+                nes = { enabled = false, },
+            })
         end,
     },
 
@@ -61,7 +81,7 @@ return {
 		}
 	},
 
-    {
+    { 
         'hrsh7th/nvim-cmp',
         config = function ()
             require'cmp'.setup {
